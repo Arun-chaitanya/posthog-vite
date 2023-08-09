@@ -1,0 +1,140 @@
+.Notebook {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    .NotebookEditor {
+        flex: 1;
+
+        > h1,
+        > h2,
+        > h3,
+        > h4,
+        > h5 {
+            margin-top: 0.5rem;
+        }
+
+        > p {
+            margin-bottom: 0.2rem;
+        }
+
+        > &.ProseMirror-focused {
+            outline: none;
+        }
+
+        > .is-empty::before {
+            content: attr(data-placeholder);
+            float: left;
+            color: rgba(0, 0, 0, 0.2);
+            pointer-events: none;
+            height: 0;
+        }
+
+        > ul,
+        ol {
+            padding-left: 1rem;
+
+            li {
+                p {
+                    margin-bottom: 0.2rem;
+                }
+            }
+        }
+
+        > ul {
+            list-style: initial;
+        }
+
+        > pre {
+            background-color: rgba(0, 0, 0, 0.05);
+            border-radius: var(--radius);
+            overflow-x: auto;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+        }
+
+        > code,
+        > p code {
+            background-color: rgba(0, 0, 0, 0.05);
+            border-radius: var(--radius);
+            padding: 0.2rem;
+        }
+
+        .Backlink__label {
+            padding: 0.125rem 0.25rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background-color: var(--white);
+
+            &:hover {
+                background-color: var(--side);
+            }
+
+            &.Backlink--selected {
+                outline-style: solid;
+                outline-color: var(--primary-bg-active);
+            }
+
+            &.Backlink--active {
+                border: 1px solid var(--brand-blue);
+                background: var(--brand-blue);
+                color: var(--white);
+
+                & .Backlink__label,
+                & svg {
+                    color: var(--white);
+                }
+            }
+
+            & .Backlink__label {
+                color: var(--black);
+            }
+        }
+    }
+
+    &--compact {
+        max-width: 1000px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .LemonTable__content > table > thead {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    .NotebookRecordingTimestamp {
+        padding: 0.125rem 0.25rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background-color: var(--white);
+
+        &.NotebookRecordingTimestamp--selected {
+            outline-style: solid;
+            outline-color: var(--primary-bg-active);
+        }
+
+        &.NotebookRecordingTimestamp--preview {
+            height: 1.375rem;
+            border: 1px solid var(--border-light);
+            color: var(--mid);
+            padding: 0rem 0.25rem;
+        }
+    }
+
+    // overriding ::selection is necessary here because
+    // antd makes it invisible otherwise
+    span::selection {
+        color: var(--primary);
+    }
+}
+
+.NotebookFloatingButton {
+    .LemonButton {
+        border-radius: 1rem;
+        min-height: 0.25rem;
+        padding: 0.25rem !important; // NOTE - yuck
+    }
+}
