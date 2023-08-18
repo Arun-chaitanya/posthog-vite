@@ -1,6 +1,6 @@
-import laptophog from './laptophog.lottie'
-import musichog from './musichog.lottie'
-import sportshog from './sportshog.lottie'
+import laptophog from './laptophog.lottie.json'
+import musichog from './musichog.lottie.json'
+import sportshog from './sportshog.lottie.json'
 
 /**
  * We're keeping lottiefiles in this folder.

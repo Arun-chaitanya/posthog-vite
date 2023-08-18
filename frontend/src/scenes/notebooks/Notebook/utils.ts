@@ -14,7 +14,7 @@ export interface Node extends PMNode {}
 export interface JSONContent extends TTJSONContent {}
 /* eslint-enable @typescript-eslint/no-empty-interface */
 
-export { ChainedCommands as EditorCommands, Range as EditorRange } from '@tiptap/core'
+export type { ChainedCommands as EditorCommands, Range as EditorRange } from '@tiptap/core'
 
 export interface NotebookEditor {
     getJSON: () => JSONContent

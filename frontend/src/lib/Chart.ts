@@ -25,7 +25,10 @@ if (registerables) {
     RawChart.register(...registerables)
 }
 RawChart.register(CrosshairPlugin)
-RawChart.defaults.animation['duration'] = 0
+RawChart.defaults.animation = {
+    duration: 0,
+    // ... other animation properties you might want to set
+}
 
 class Chart<TType extends ChartType = ChartType, TData = DefaultDataPoint<TType>, TLabel = unknown> extends RawChart<
     TType,
@@ -46,9 +49,8 @@ Tooltip.positioners.cursor = function (_, coordinates) {
     return coordinates
 }
 
-export {
+export type {
     ActiveElement,
-    Chart,
     ChartDataset,
     ChartEvent,
     ChartItem,
@@ -62,3 +64,5 @@ export {
     Plugin,
     ScriptableLineSegmentContext,
 }
+
+export { Chart }
