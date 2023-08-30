@@ -1,0 +1,5 @@
+import 'whatwg-fetch'
+import 'jest-canvas-mock'
+
+window.scrollTo = jest.fn()
+window.matchMedia = jest.fn(() => ({ matches: false } as MediaQueryList))

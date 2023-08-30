@@ -16,9 +16,9 @@ export interface UserDetailsFormType {
 
 export const userLogic = kea<userLogicType>([
     path(['scenes', 'userLogic']),
-    connect({
+    connect(() => ({
         values: [preflightLogic, ['preflight']],
-    }),
+    })),
     actions(() => ({
         loadUser: (resetOnFailure?: boolean) => ({ resetOnFailure }),
         updateCurrentTeam: (teamId: number, destination?: string) => ({ teamId, destination }),

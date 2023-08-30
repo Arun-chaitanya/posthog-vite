@@ -2,23 +2,9 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 
-function lottiePlugin() {
-    return {
-        name: 'lottie-plugin',
-        resolveId(id) {
-            console.log(id, 'ARUN')
-            if (id.endsWith('.lottie')) {
-                // Replace .lottie with .json for resolving
-                const jsonId = id.replace(/\.lottie$/, '.json')
-                return jsonId
-            }
-        },
-    }
-}
-
 // https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [react(), lottiePlugin()],
+    plugins: [react()],
     root: 'frontend/src',
     css: {
         preprocessorOptions: {
@@ -26,6 +12,9 @@ export default defineConfig({
                 javascriptEnabled: true, // Enable inline JavaScript in Less styles
             },
         },
+    },
+    server: {
+        port: 8234,
     },
     resolve: {
         alias: [
