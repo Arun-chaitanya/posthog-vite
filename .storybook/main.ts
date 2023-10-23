@@ -1,7 +1,8 @@
-import type { StorybookConfig } from '@storybook/react/types'
-import { createEntry } from '../webpack.config'
+import type { StorybookConfig } from '@storybook/react-vite'
+import { mergeConfig } from 'vite'
 
 const config: StorybookConfig = {
+    core: { builder: '@storybook/builder-vite' },
     stories: ['../frontend/src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
     addons: [
         {
@@ -19,20 +20,18 @@ const config: StorybookConfig = {
         'storybook-addon-pseudo-states',
     ],
     staticDirs: ['public'],
-    webpackFinal: (config) => {
-        const mainConfig = createEntry('main')
-        return {
-            ...config,
+    async viteFinal(config) {
+        return mergeConfig(config, {
             resolve: {
                 ...config.resolve,
-                extensions: [...config.resolve!.extensions!, ...mainConfig.resolve.extensions],
-                alias: { ...config.resolve!.alias, ...mainConfig.resolve.alias },
+                extensions: [...config.resolve!.extensions!],
+                alias: { ...config.resolve!.alias },
             },
             module: {
-                ...config.module,
+                // ...config.module,
                 rules: [
-                    ...mainConfig.module.rules,
-                    ...config.module!.rules.filter((rule) => rule.test!.toString().includes('.mdx')),
+                    // ...mainConfig.module.rules,
+                    // ...config.module!.rules.filter((rule) => rule.test!.toString().includes('.mdx')),
                     {
                         test: /\.stories\.tsx?$/,
                         use: [
@@ -45,11 +44,9 @@ const config: StorybookConfig = {
                     },
                 ],
             },
-        }
+        })
     },
-    features: {
-        postcss: false,
-    },
+    framework: '@storybook/react-vite',
 }
 
 export default config

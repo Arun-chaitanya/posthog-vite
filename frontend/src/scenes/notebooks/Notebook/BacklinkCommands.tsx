@@ -33,10 +33,11 @@ const BacklinkCommandsPopover = forwardRef<ReactRenderer, BacklinkCommandsProps>
     )
 })
 
-const BacklinkCommands = forwardRef<ReactRenderer, BacklinkCommandsProps>(function BacklinkCommands(
-    { range = { from: 0, to: 0 }, query, onClose },
-    ref
-): JSX.Element | null {
+const BacklinkCommands = forwardRef<ReactRenderer, BacklinkCommandsProps>(function BacklinkCommands({
+    range = { from: 0, to: 0 },
+    query,
+    onClose,
+}): JSX.Element | null {
     const { editor } = useValues(notebookLogic)
 
     const onSelect = (

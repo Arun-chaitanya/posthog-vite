@@ -135,7 +135,7 @@ ROOT_URLCONF = "posthog.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": ["frontend/dist", "posthog/templates", "posthog/year_in_posthog"],
+        "DIRS": ["frontend/src", "frontend/dist", "posthog/templates", "posthog/year_in_posthog"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -217,7 +217,11 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "frontend/dist"), os.path.join(BASE_DIR, "posthog/year_in_posthog/images")]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "frontend/dist"),
+    os.path.join(BASE_DIR, "frontend/public"),
+    os.path.join(BASE_DIR, "posthog/year_in_posthog/images"),
+]
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 AUTH_USER_MODEL = "posthog.User"
@@ -228,6 +232,10 @@ LOGIN_REDIRECT_URL = "/"
 APPEND_SLASH = False
 CORS_URLS_REGEX = r"^/api/(?!early_access_features|surveys).*$"
 CORS_ALLOW_HEADERS = default_headers + ("traceparent", "request-id", "request-context")
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8234",
+]
+CORS_ALLOW_CREDENTIALS = True
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
 REST_FRAMEWORK = {

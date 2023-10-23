@@ -18,9 +18,9 @@ export enum AnimationType {
 }
 
 export const animations: Record<AnimationType, { url: string; width: number; height: number }> = {
-    laptophog: { url: laptophog, width: 800, height: 800 },
-    musichog: { url: musichog, width: 800, height: 800 },
-    sportshog: { url: sportshog, width: 800, height: 800 },
+    laptophog: { url: JSON.stringify(laptophog), width: 800, height: 800 },
+    musichog: { url: JSON.stringify(musichog), width: 800, height: 800 },
+    sportshog: { url: JSON.stringify(sportshog), width: 800, height: 800 },
 }
 
 const animationCache: Record<string, Record<string, any>> = {}
