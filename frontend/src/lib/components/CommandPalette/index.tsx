@@ -5,8 +5,9 @@ import { commandPaletteLogic } from './commandPaletteLogic'
 import { CommandInput } from './CommandInput'
 import { CommandResults } from './CommandResults'
 import { useEventListener } from 'lib/hooks/useEventListener'
-import squeakFile from 'public/squeak.mp3'
 import './index.scss'
+
+const squeakFile = '/static/squeak.mp3'
 
 export function CommandPalette(): JSX.Element | null {
     useMountedLogic(commandPaletteLogic)

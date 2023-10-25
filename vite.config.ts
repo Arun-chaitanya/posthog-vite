@@ -10,6 +10,7 @@ export default defineConfig({
     publicDir: 'frontend/public',
     root: 'frontend/src',
     build: {
+        outDir: '../dist',
         rollupOptions: {
             output: {
                 assetFileNames: (file) => {

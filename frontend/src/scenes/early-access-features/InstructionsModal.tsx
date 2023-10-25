@@ -1,9 +1,11 @@
 import { LemonCollapse, LemonModal, Link } from '@posthog/lemon-ui'
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'
 import { FeatureFlagType } from '~/types'
-import EarlyAccessFeatureImage from 'public/early-access-feature-demo.png'
+
 import { preflightLogic } from 'scenes/PreflightCheck/preflightLogic'
 import { useValues } from 'kea'
+
+const EarlyAccessFeatureImage = '/static/early-access-feature-demo.png'
 
 interface InstructionsModalProps {
     featureFlag: FeatureFlagType

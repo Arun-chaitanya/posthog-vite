@@ -10,10 +10,11 @@ import { useState } from 'react'
 
 import { pluralize } from 'lib/utils'
 
-import BlankDashboardHog from 'public/blank-dashboard-hog.png'
 import './NewDashboardModal.scss'
 import { FallbackCoverImage } from 'lib/components/FallbackCoverImage/FallbackCoverImage'
 import clsx from 'clsx'
+
+const BlankDashboardHog = '/static/blank-dashboard-hog.png'
 
 function TemplateItem({
     template,

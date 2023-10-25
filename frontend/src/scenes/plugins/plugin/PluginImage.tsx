@@ -1,8 +1,9 @@
 import { parseGithubRepoURL } from 'lib/utils'
 import { useEffect, useState } from 'react'
 import { CodeOutlined } from '@ant-design/icons'
-import imgPluginDefault from 'public/plugin-default.svg'
 import { PluginInstallationType } from 'scenes/plugins/types'
+
+const imgPluginDefault = '/static/plugin-default.svg'
 
 export function PluginImage({
     url,
